@@ -1,0 +1,4 @@
+You are given a sliding puzzle (e.g. 15 Puzzle).
+
+Your task is to determine whether it is solvable or not. And if it's so output
+the shortest sequence of turns which can be took to solve the puzzle.

@@ -1,0 +1,4 @@
+You are given an exchange matrix.
+
+Your task is to determine if there are arbitrations i.e. exchanges that can be 
+used to make a lot of money.
