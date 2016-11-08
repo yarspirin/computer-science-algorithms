@@ -33,13 +33,6 @@ void run() {
       edge_capacities[to][from] += capacity;
     }
 
-    for (auto& row : edge_capacities) {
-      for (auto& elem : row) {
-        std::cout << elem << " ";
-      }
-      std::cout << std::endl;
-    }
-
     Graph graph(edge_capacities);
     graph.SetSpecialVertices(source, target);
     std::cout << graph.FindMaxFlow() << std::endl;
