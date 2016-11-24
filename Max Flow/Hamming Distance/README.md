@@ -1,7 +1,7 @@
 # Hamming Distance
 
 Hamming Distance is the project which provides an implementation of efficient algorithm for the task:
-http://acm.timus.ru/problem.aspx?space=1&num=1851
+http://acm.timus.ru/problem.aspx?space=1&num=1851&locale=en
 
 # Tests
 
