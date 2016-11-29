@@ -1,6 +1,6 @@
 # String Transformation
 
-String Transformation is the project which can be used to restore string by provided prefix/z - function values.
+String Transformation is the project which can be used to restore string by provided prefix-function or z-function values.
 
 # Tests
 
