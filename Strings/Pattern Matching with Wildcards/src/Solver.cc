@@ -37,11 +37,11 @@ Solver::Solver(const std::string &pattern, const std::string &text)
   indices_ = GetIndices();
 
   for (int i = 0; i < indices_.size(); ++i) {
-    dfa.Put(pattern_.substr(static_cast<size_t>(indices_[i].first),
+    dfa_.Put(pattern_.substr(static_cast<size_t>(indices_[i].first),
                             static_cast<size_t>(indices_[i].second - indices_[i].first + 1)), i);
   }
 
-  dfa.BuildSuffixLinks();
+  dfa_.BuildSuffixLinks();
 }
 
 std::vector<int> Solver::GetEntries() {
@@ -66,18 +66,18 @@ std::vector<int> Solver::GetEntries() {
 
   for (int i = text_begin_; i <= text_end_; ++i) {
 
-    while (dfa.GetTraverser() != dfa.GetRoot() ||
-        dfa.GetTraverser()->children.find(text_[i]) != dfa.GetTraverser()->children.end()) {
+    while (dfa_.GetTraverser() != dfa_.GetRoot() ||
+        dfa_.GetTraverser()->children.find(text_[i]) != dfa_.GetTraverser()->children.end()) {
 
-      if (dfa.GetTraverser()->children.find(text_[i]) == dfa.GetTraverser()->children.end()) {
-        dfa.MoveOnSuffixLink();
+      if (dfa_.GetTraverser()->children.find(text_[i]) == dfa_.GetTraverser()->children.end()) {
+        dfa_.MoveOnSuffixLink();
         continue;
       }
 
-      dfa.MoveOnLetter(text_[i]);
+      dfa_.MoveOnLetter(text_[i]);
 
-      std::shared_ptr<Node> visitor = dfa.GetTraverser();
-      while (visitor != dfa.GetRoot()) {
+      std::shared_ptr<Node> visitor = dfa_.GetTraverser();
+      while (visitor != dfa_.GetRoot()) {
 
         for (auto &id : visitor->ids) {
 

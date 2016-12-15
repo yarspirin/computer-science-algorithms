@@ -27,7 +27,7 @@ class Solver {
   std::string pattern_;
   std::string text_;
 
-  DeterministicFiniteAutomaton dfa;
+  DeterministicFiniteAutomaton dfa_;
 };
 
 
