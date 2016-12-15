@@ -13,6 +13,7 @@
 class Solver {
  public:
   Solver(const std::string& pattern, const std::string& text);
+  void Init();
   std::vector<int> GetEntries();
 
  private:
@@ -27,6 +28,7 @@ class Solver {
   std::string pattern_;
   std::string text_;
 
+  bool is_valid_;
   DeterministicFiniteAutomaton dfa_;
 };
 

@@ -13,6 +13,7 @@ void run() {
   std::cin >> text;
 
   Solver solver(pattern, text);
+  solver.Init();
   std::vector<int> entries = solver.GetEntries();
 
   for (auto& entry : entries) {

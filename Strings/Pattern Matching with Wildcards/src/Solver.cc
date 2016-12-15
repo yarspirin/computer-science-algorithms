@@ -4,15 +4,19 @@
 
 #include <iostream>
 #include <vector>
+#include <cassert>
+
 #include "Solver.h"
 
 Solver::Solver(const std::string &pattern, const std::string &text)
     : pattern_(pattern),
-      text_(text) {
+      text_(text),
+      is_valid_(false) { }
 
+void Solver::Init() {
   // First character that is different from '?'
   int left = 0;
-  while (left < pattern.length()) {
+  while (left < pattern_.length()) {
     if (pattern_[left] != '?') {
       break;
     }
@@ -32,19 +36,21 @@ Solver::Solver(const std::string &pattern, const std::string &text)
   pattern_end_ = right;
 
   text_begin_ = left;
-  text_end_ = right + static_cast<int>(text.length() - pattern.length());
+  text_end_ = right + static_cast<int>(text_.length() - pattern_.length());
 
   indices_ = GetIndices();
 
   for (int i = 0; i < indices_.size(); ++i) {
     dfa_.Put(pattern_.substr(static_cast<size_t>(indices_[i].first),
-                            static_cast<size_t>(indices_[i].second - indices_[i].first + 1)), i);
+                             static_cast<size_t>(indices_[i].second - indices_[i].first + 1)), i);
   }
 
   dfa_.BuildSuffixLinks();
+  is_valid_ = true;
 }
 
 std::vector<int> Solver::GetEntries() {
+  assert(is_valid_);
   std::vector<int> result;
 
   // Pattern is empty
